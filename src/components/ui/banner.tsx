@@ -101,6 +101,17 @@ export function Banner({
         </p>
       </div>
 
+      {/* Profile Avatar */}
+      <div className="hidden sm:flex items-center">
+        <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-green-600/30 bg-white/80 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#10b981"/>
+            <circle cx="16" cy="12" r="5" fill="white"/>
+            <path d="M8 24c0-4.418 3.582-8 8-8s8 3.582 8 8" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
       <div className="flex items-center sm:-my-1">
         <button
           type="button"
