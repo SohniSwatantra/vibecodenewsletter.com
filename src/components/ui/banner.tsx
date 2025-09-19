@@ -102,10 +102,10 @@ export function Banner({
       </div>
 
       {/* Profile Avatar */}
-      <div className="hidden sm:flex items-center">
-        <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-green-600/30 bg-white/80">
+      <div className="hidden sm:flex items-center relative">
+        <div className="w-16 h-16 relative z-10">
           <img
-            src="/images/Screenshot 2025-09-20 at 12.50.47 AM.png"
+            src="/images/profile-avatar.png"
             alt="Profile Avatar"
             className="w-full h-full object-cover"
           />
