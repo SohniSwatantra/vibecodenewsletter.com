@@ -71,7 +71,7 @@ export default function HomePage() {
       <DottedSurface className="size-full" />
       
       {/* As seen in - Top Left */}
-      <div className="fixed top-4 left-4 z-50">
+      <div className="fixed top-4 left-4 z-50 hidden lg:block">
         <FeaturedIn />
       </div>
       

@@ -102,7 +102,7 @@ export function Banner({
       </div>
 
       {/* Profile Avatar */}
-      <div className="flex items-center relative">
+      <div className="hidden sm:flex items-center relative">
         <div className="w-16 h-16 relative z-20 -my-4">
           <img
             src="/images/profile-avatar.png"
