@@ -803,3 +803,237 @@ git push origin main  # Triggers automatic Netlify deployment
 - [ ] Test dock navigation interactions
 
 The project is now fully configured for seamless deployment on Netlify with automatic builds triggered by GitHub commits.
+
+---
+
+## 🎯 BANNER COMPONENT
+
+### Prompt to implement the banner from 21st.dev:
+
+You are given a task to integrate an existing React component in the codebase
+
+The codebase should support:
+- shadcn project structure  
+- Tailwind CSS
+- Typescript
+
+If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.
+
+Determine the default path for components and styles. 
+If default path for components is not /components/ui, provide instructions on why it's important to create this folder
+Copy-paste this component to /components/ui folder:
+
+```tsx
+banner.tsx
+"use client"
+
+import * as React from "react"
+import { X } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+function Grid({
+  cellSize = 12,
+  strokeWidth = 1,
+  patternOffset = [0, 0],
+  className,
+}: {
+  cellSize?: number
+  strokeWidth?: number
+  patternOffset?: [number, number]
+  className?: string
+}) {
+  const id = React.useId()
+
+  return (
+    <svg
+      className={cn(
+        "pointer-events-none absolute inset-0 text-black/10",
+        className,
+      )}
+      width="100%"
+      height="100%"
+    >
+      <defs>
+        <pattern
+          id={`grid-${id}`}
+          x={patternOffset[0] - 1}
+          y={patternOffset[1] - 1}
+          width={cellSize}
+          height={cellSize}
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d={`M ${cellSize} 0 L 0 0 0 ${cellSize}`}
+            fill="transparent"
+            stroke="currentColor"
+            strokeWidth={strokeWidth}
+          />
+        </pattern>
+      </defs>
+      <rect fill={`url(#grid-${id})`} width="100%" height="100%" />
+    </svg>
+  )
+}
+
+interface BannerProps {
+  show: boolean
+  onHide: () => void
+  icon?: React.ReactNode
+  title: React.ReactNode
+  action: {
+    label: string
+    onClick: () => void
+  }
+  learnMoreUrl?: string
+}
+
+export function Banner({
+  show,
+  onHide,
+  icon,
+  title,
+  action,
+  learnMoreUrl,
+}: BannerProps) {
+  if (!show) return null
+
+  return (
+    <div className="relative isolate flex flex-col justify-between gap-3 overflow-hidden rounded-lg border border-green-600/15 bg-gradient-to-r from-lime-100/80 to-emerald-100/80 py-3 pl-4 pr-12 sm:flex-row sm:items-center sm:py-2">
+      <Grid
+        cellSize={13}
+        patternOffset={[0, -1]}
+        className="text-black/30 mix-blend-overlay [mask-image:linear-gradient(to_right,black,transparent)] md:[mask-image:linear-gradient(to_right,black_60%,transparent)]"
+      />
+
+      <div className="flex items-center gap-3">
+        {icon && (
+          <div className="hidden rounded-full border border-green-600/50 bg-white/50 p-1 shadow-[inset_0_0_1px_1px_#fff] sm:block">
+            {icon}
+          </div>
+        )}
+        <p className="text-sm text-gray-900">
+          {title}
+          {learnMoreUrl && (
+            <>
+              {" "}
+              <a
+                href={learnMoreUrl}
+                target="_blank"
+                className="text-gray-700 underline transition-colors hover:text-black"
+              >
+                Learn more
+              </a>
+            </>
+          )}
+        </p>
+      </div>
+
+      <div className="flex items-center sm:-my-1">
+        <button
+          type="button"
+          className="whitespace-nowrap rounded-md border border-green-700/50 px-3 py-1 text-sm text-gray-800 transition-colors hover:bg-green-500/10"
+          onClick={action.onClick}
+        >
+          {action.label}
+        </button>
+      </div>
+
+      <button
+        type="button"
+        className="absolute inset-y-0 right-2.5 p-1 text-sm text-green-700 underline transition-colors hover:text-green-900"
+        onClick={onHide}
+      >
+        <X className="h-[18px] w-[18px]" />
+      </button>
+    </div>
+  )
+}
+```
+
+### Custom Implementation with VibeCodeFixers Branding:
+
+```tsx
+// Custom Banner Usage for VibeCode Newsletter
+import { useState } from 'react';
+import { Code } from 'lucide-react';
+import { Banner } from "@/components/ui/banner";
+
+const [showBanner, setShowBanner] = useState(true);
+
+<Banner
+  show={showBanner}
+  onHide={() => setShowBanner(false)}
+  icon={<Code className="m-px h-4 w-4 text-green-800" />}
+  title={
+    <>
+      From the makers of{" "}
+      <a
+        href="https://vibecodefixers.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-semibold underline hover:text-green-900 transition-colors"
+      >
+        VibeCodeFixers.com
+      </a>
+    </>
+  }
+  action={{
+    label: "Fix Code Now",
+    onClick: () => window.open('https://vibecodefixers.com', '_blank'),
+  }}
+/>
+```
+
+### Install NPM dependencies:
+```bash
+@radix-ui/react-slot class-variance-authority @radix-ui/react-dialog @radix-ui/react-label @radix-ui/react-checkbox
+```
+
+### Required shadcn/ui components created:
+- Button component with variants
+- Dialog components for modals
+- Input component for forms
+- Label component for accessibility
+- Checkbox component for form inputs
+
+### Implementation Guidelines
+1. Analyze the component structure and identify all required dependencies
+2. Review the component's arguments and state
+3. Identify any required context providers or hooks and install them
+4. Questions to Ask
+- What data/props will be passed to this component?
+- Are there any specific state management requirements?
+- Are there any required assets (images, icons, etc.)?
+- What is the expected responsive behavior?
+- What is the best place to use this component in the app?
+
+### Steps to integrate
+0. Copy paste all the code above in the correct directories
+1. Install external dependencies
+2. Fill image assets with Unsplash stock images you know exist
+3. Use lucide-react icons for svgs or logos if component requires them
+
+### Installation Command
+```bash
+npx shadcn@latest add "https://21st.dev/r/dubinc/banner?api_key=eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDIyMkFBQSIsImtpZCI6Imluc18ybXdGd3U1cW5FQXozZ1U2dmxnMW13ZU1PZEoiLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwczovLzIxc3QuZGV2IiwiZXhwIjoxNzU4Mjc1Nzk3LCJpYXQiOjE3NTgyNzQ4OTcsImlzcyI6Imh0dHBzOi8vY2xlcmsuMjFzdC5kZXYiLCJqdGkiOiJhZTIxMzIxNDAzNzdjZDkwNWJlMiIsIm5iZiI6MTc1ODI3NDg5Miwic3ViIjoidXNlcl8zMldScENTQWpZeGh5U3lBcXE1T3ZCWVdPMnYifQ.g7kM_zaFI-B6JnS9RaJnkd5GGQt4gXx4EvHLAVkgS96FNi1KCBM2qusEW1cnmrqO_7AO3lm54A8yOnOlO-YgsAZTi1Ocrw51WvZAqtEDx4yqm-4JHqTs5BSeb3y7kR235886kT9vmpFZe3_b-nF8XgvoWkfDrkPgcTL1NZ4hDsVMrpUpMBlRsLfpogLucxYUCG_TpdU2z6t-vdwEGmqsniSnPXl0QWPQdiSt2asi0cQlQb5_FXqTJ3Y-HyJcT8neeD06wD9rcb3Zhlv05H-iz8ZJRBSZPjIJI3jHtB1ZhDLHhMPPHLRqrru7PMOgw7u02O-q-J2p3b9QLA-Ds462wA"
+```
+
+### Banner Features:
+- ✅ **Grid Pattern Background**: Subtle SVG grid overlay with gradient mask
+- ✅ **Responsive Design**: Adapts layout for mobile and desktop
+- ✅ **Custom Branding**: "From the makers of VibeCodeFixers.com" message
+- ✅ **Interactive Elements**: Dismissible banner with close button
+- ✅ **Call-to-Action**: "Fix Code Now" button linking to VibeCodeFixers.com
+- ✅ **Code Icon**: Professional code icon with green accent color
+- ✅ **Gradient Background**: Lime to emerald gradient with green accents
+- ✅ **Accessibility**: Proper aria-labels and semantic markup
+- ✅ **Animation**: Smooth hover effects and transitions
+
+### Implementation Status: ✅ COMPLETED
+
+The Banner component has been successfully integrated with:
+- Custom VibeCodeFixers.com branding and link
+- Positioned at the top of the page with fixed positioning
+- Dismissible functionality with state management
+- Professional styling matching the app's design system
+- Code icon and "Fix Code Now" call-to-action button
