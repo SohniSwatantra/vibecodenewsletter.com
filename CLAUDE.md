@@ -715,3 +715,91 @@ The app is now running at: http://localhost:3000
 - **Responsive Design**: Works across different screen sizes
 
 The implementation follows all requirements from the CLAUDE.md specification and provides a stunning visual experience for the VibeCode Newsletter landing page.
+
+---
+
+## 🚀 DEPLOYMENT & REPOSITORY
+
+### 📂 GitHub Repository
+- **Repository URL**: https://github.com/SohniSwatantra/vibecodenewsletter.com
+- **Main Branch**: `main`
+- **Git Status**: ✅ All changes committed and ready for deployment
+
+### 🌐 Netlify Deployment Setup
+
+#### Configuration Files Added:
+1. **netlify.toml**:
+```toml
+[build]
+  publish = "out"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+2. **next.config.ts** (Updated for static export):
+```typescript
+const nextConfig: NextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
+  images: {
+    unoptimized: true
+  }
+};
+```
+
+#### Deployment Steps:
+1. **Create GitHub Repository**:
+   - Repository created at: `https://github.com/SohniSwatantra/vibecodenewsletter.com`
+   - Initial commit with complete implementation
+   - Deployment configuration committed
+
+2. **Netlify Deployment Process**:
+   - Connect Netlify to GitHub repository
+   - Select `main` branch for deployment
+   - Build settings auto-configured via `netlify.toml`
+   - Build command: `npm run build`
+   - Publish directory: `out`
+
+3. **Production Features**:
+   - ✅ Static site generation for optimal performance
+   - ✅ Automatic deployments on git push
+   - ✅ Custom domain support ready
+   - ✅ HTTPS enabled by default
+   - ✅ CDN distribution for global performance
+
+#### Build & Deployment Commands:
+```bash
+# Local build test
+npm run build
+
+# Development server
+npm run dev
+
+# Production deployment
+git push origin main  # Triggers automatic Netlify deployment
+```
+
+### 🔧 Technical Stack Summary:
+- **Frontend**: Next.js 15.5.3 with React 19
+- **Styling**: Tailwind CSS 4 + shadcn/ui components
+- **Animation**: Three.js for 3D particle effects
+- **Theme**: next-themes for dark/light mode
+- **Icons**: Lucide React
+- **Deployment**: Netlify with static export
+- **Repository**: GitHub with automated deployments
+
+### 📋 Post-Deployment Checklist:
+- [ ] Verify GitHub repository is public and accessible
+- [ ] Connect repository to Netlify
+- [ ] Test deployment build process
+- [ ] Verify all animations work in production
+- [ ] Test theme switching functionality
+- [ ] Confirm responsive design on all devices
+- [ ] Test dock navigation interactions
+
+The project is now fully configured for seamless deployment on Netlify with automatic builds triggered by GitHub commits.
