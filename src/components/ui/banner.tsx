@@ -71,7 +71,7 @@ export function Banner({
   if (!show) return null
 
   return (
-    <div className="relative isolate flex flex-col justify-between gap-2 overflow-hidden rounded-lg border border-green-600/15 bg-gradient-to-r from-lime-100/80 to-emerald-100/80 py-2 pl-4 pr-12 sm:flex-row sm:items-center sm:py-1.5">
+    <div className="relative isolate flex flex-col justify-between gap-3 overflow-hidden rounded-lg border border-green-600/15 bg-gradient-to-r from-lime-100/80 to-emerald-100/80 py-3 pl-6 pr-16 sm:flex-row sm:items-center sm:py-3">
       <Grid
         cellSize={13}
         patternOffset={[0, -1]}
@@ -115,7 +115,7 @@ export function Banner({
       <div className="flex items-center sm:-my-1">
         <button
           type="button"
-          className="whitespace-nowrap rounded-md border border-green-700/50 px-3 py-1 text-sm text-gray-800 transition-colors hover:bg-green-500/10"
+          className="whitespace-nowrap rounded-md border border-green-700/50 px-4 py-2 text-sm text-gray-800 transition-colors hover:bg-green-500/10"
           onClick={action.onClick}
         >
           {action.label}
