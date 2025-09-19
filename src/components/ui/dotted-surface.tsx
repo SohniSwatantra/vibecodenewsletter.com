@@ -14,13 +14,13 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
         scene: THREE.Scene;
         camera: THREE.PerspectiveCamera;
         renderer: THREE.WebGLRenderer;
-        particles: THREE.Points[];
         animationId: number;
         count: number;
     } | null>(null);
 
     useEffect(() => {
-        if (!containerRef.current) return;
+        const currentContainer = containerRef.current;
+        if (!currentContainer) return;
 
         const SEPARATION = 150;
         const AMOUNTX = 40;
@@ -46,10 +46,9 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(scene.fog.color, 0);
 
-        containerRef.current.appendChild(renderer.domElement);
+        currentContainer.appendChild(renderer.domElement);
 
         // Create particles
-        const particles: THREE.Points[] = [];
         const positions: number[] = [];
         const colors: number[] = [];
 
@@ -91,10 +90,10 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
         scene.add(points);
 
         let count = 0;
-        let animationId: number;
+        let animationId = 0;
 
         // Animation function
-        const animate = () => {
+        const animate = (): void => {
             animationId = requestAnimationFrame(animate);
 
             const positionAttribute = geometry.attributes.position;
@@ -118,7 +117,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
             // Update point sizes based on wave
             const customMaterial = material as THREE.PointsMaterial & {
-                uniforms?: any;
+                uniforms?: Record<string, unknown>;
             };
             if (!customMaterial.uniforms) {
                 // For dynamic size changes, we'd need a custom shader
@@ -146,7 +145,6 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
             scene,
             camera,
             renderer,
-            particles: [points],
             animationId,
             count,
         };
@@ -172,8 +170,8 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
                 sceneRef.current.renderer.dispose();
 
-                if (containerRef.current && sceneRef.current.renderer.domElement) {
-                    containerRef.current.removeChild(
+                if (currentContainer && sceneRef.current.renderer.domElement) {
+                    currentContainer.removeChild(
                         sceneRef.current.renderer.domElement,
                     );
                 }
