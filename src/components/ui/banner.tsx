@@ -71,20 +71,20 @@ export function Banner({
   if (!show) return null
 
   return (
-    <div className="relative isolate flex flex-col justify-between gap-3 overflow-hidden rounded-lg border border-green-600/15 bg-gradient-to-r from-lime-100/80 to-emerald-100/80 py-3 pl-6 pr-16 sm:flex-row sm:items-center sm:py-3">
+    <div className="relative isolate flex flex-col justify-between gap-2 overflow-hidden rounded-md border border-green-600/15 bg-gradient-to-r from-lime-100/80 to-emerald-100/80 py-2 pl-4 pr-12 sm:flex-row sm:items-center sm:py-1.5">
       <Grid
         cellSize={13}
         patternOffset={[0, -1]}
         className="text-black/30 mix-blend-overlay [mask-image:linear-gradient(to_right,black,transparent)] md:[mask-image:linear-gradient(to_right,black_60%,transparent)]"
       />
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         {icon && (
-          <div className="hidden rounded-full border border-green-600/50 bg-white/50 p-1 shadow-[inset_0_0_1px_1px_#fff] sm:block">
+          <div className="hidden rounded-full border border-green-600/50 bg-white/50 p-0.5 shadow-[inset_0_0_1px_1px_#fff] sm:block">
             {icon}
           </div>
         )}
-        <p className="text-sm text-gray-900">
+        <p className="text-xs text-gray-900">
           {title}
           {learnMoreUrl && (
             <>
@@ -103,7 +103,7 @@ export function Banner({
 
       {/* Profile Avatar */}
       <div className="hidden sm:flex items-center relative">
-        <div className="w-16 h-16 relative z-20 -my-4">
+        <div className="w-10 h-10 relative z-20 -my-2">
           <img
             src="/images/profile-avatar.png"
             alt="Profile Avatar"
@@ -112,10 +112,10 @@ export function Banner({
         </div>
       </div>
 
-      <div className="flex items-center sm:-my-1">
+      <div className="flex items-center sm:-my-0.5">
         <button
           type="button"
-          className="whitespace-nowrap rounded-md border border-green-700/50 px-4 py-2 text-sm text-gray-800 transition-colors hover:bg-green-500/10"
+          className="whitespace-nowrap rounded-sm border border-green-700/50 px-2 py-1 text-xs text-gray-800 transition-colors hover:bg-green-500/10"
           onClick={action.onClick}
         >
           {action.label}
@@ -124,10 +124,10 @@ export function Banner({
 
       <button
         type="button"
-        className="absolute inset-y-0 right-2.5 p-1 text-sm text-green-700 underline transition-colors hover:text-green-900"
+        className="absolute inset-y-0 right-1.5 p-0.5 text-xs text-green-700 underline transition-colors hover:text-green-900"
         onClick={onHide}
       >
-        <X className="h-[18px] w-[18px]" />
+        <X className="h-[14px] w-[14px]" />
       </button>
     </div>
   )
