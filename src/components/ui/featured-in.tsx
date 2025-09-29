@@ -11,21 +11,21 @@ export function FeaturedIn() {
 
   return (
     <div className="flex flex-col items-start space-y-4">
-      <h3 className="text-lg font-semibold text-foreground/80 mb-2">
+      <h3 className="text-sm font-medium text-foreground/70 mb-1">
         As seen in
       </h3>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-2">
         {featuredLogos.map((logo) => (
           <div
             key={logo.id}
-            className="relative w-56 h-20 bg-white border-4 border-orange-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:border-orange-500 rounded-lg overflow-hidden transform -rotate-[35deg]"
+            className="relative w-32 h-12 bg-white border-2 border-orange-400 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-orange-500 rounded-md overflow-hidden transform -rotate-[35deg]"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
               fill
               className="object-cover"
-              sizes="224px"
+              sizes="128px"
             />
           </div>
         ))}

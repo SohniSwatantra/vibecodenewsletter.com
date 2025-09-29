@@ -16,6 +16,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VibeCode Newsletter",
   description: "Your daily dose of coding inspiration and tech insights",
+  icons: {
+    icon: [
+      {
+        url: "/profile-avatar.png",
+        sizes: "any",
+      },
+    ],
+    apple: [
+      {
+        url: "/profile-avatar.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
