@@ -41,34 +41,42 @@ export default function HomePage() {
             Sponsored by
           </span>
           <div className="flex items-center gap-8 sm:gap-12">
-            <Image
-              src="/sponsors/nosana.png"
-              alt="Nosana"
-              width={120}
-              height={36}
-              className="h-8 w-auto object-contain brightness-90"
-            />
-            <Image
-              src="/sponsors/nowa.png"
-              alt="Nowa"
-              width={100}
-              height={36}
-              className="h-8 w-auto object-contain"
-            />
-            <Image
-              src="/sponsors/vibecodefixers.png"
-              alt="VibeCodeFixers"
-              width={120}
-              height={36}
-              className="h-8 w-auto object-contain"
-            />
-            <Image
-              src="/sponsors/tag.png"
-              alt="TAG"
-              width={100}
-              height={36}
-              className="h-8 w-auto object-contain brightness-90"
-            />
+            <a href="https://nosana.com/" target="_blank" rel="noopener noreferrer">
+              <Image
+                src="/sponsors/nosana.png"
+                alt="Nosana"
+                width={120}
+                height={36}
+                className="h-8 w-auto object-contain brightness-90 hover:brightness-110 transition"
+              />
+            </a>
+            <a href="https://www.nowa.dev/" target="_blank" rel="noopener noreferrer">
+              <Image
+                src="/sponsors/nowa.png"
+                alt="Nowa"
+                width={100}
+                height={36}
+                className="h-8 w-auto object-contain hover:brightness-110 transition"
+              />
+            </a>
+            <a href="https://vibecodefixers.com/" target="_blank" rel="noopener noreferrer">
+              <Image
+                src="/sponsors/vibecodefixers.png"
+                alt="VibeCodeFixers"
+                width={120}
+                height={36}
+                className="h-8 w-auto object-contain hover:brightness-110 transition"
+              />
+            </a>
+            <a href="https://tag.space/" target="_blank" rel="noopener noreferrer">
+              <Image
+                src="/sponsors/tag.png"
+                alt="TAG"
+                width={100}
+                height={36}
+                className="h-8 w-auto object-contain brightness-90 hover:brightness-110 transition"
+              />
+            </a>
           </div>
         </div>
       </div>
