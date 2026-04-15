@@ -92,7 +92,7 @@ export default function HomePage() {
         </div>
 
         {/* Copy */}
-        <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
+        <p className="text-[#f2ffe6] text-sm leading-relaxed max-w-sm mx-auto">
           Subscribe to get the latest news on the vibe coding ecosystem.
           Newest tools, VibeCoding tutorials, courses, and the latest
           hackathons online and offline.
