@@ -35,6 +35,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center space-y-10">
+        {/* Copy */}
+        <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
+          Subscribe to get the latest news on the vibe coding ecosystem.
+          Newest tools, VibeCoding tutorials, courses, and the latest
+          hackathons online and offline.
+        </p>
+
         {/* Logo / Title */}
         <div className="space-y-3">
           <h1 className="font-mono text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
@@ -42,13 +49,6 @@ export default function HomePage() {
           </h1>
           <p className="text-lg text-muted-foreground">Newsletter</p>
         </div>
-
-        {/* Copy */}
-        <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
-          Subscribe to get the latest news on the vibe coding ecosystem.
-          Newest tools, VibeCoding tutorials, courses, and the latest
-          hackathons online and offline.
-        </p>
 
         {/* Subscribe Button */}
         <button
