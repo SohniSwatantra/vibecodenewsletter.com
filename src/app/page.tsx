@@ -1,116 +1,76 @@
 'use client';
-import { useState } from 'react';
-import { DottedSurface } from "@/components/ui/dotted-surface";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { LimelightNav } from "@/components/ui/limelight-nav";
-import { Banner } from "@/components/ui/banner";
-import { FeaturedIn } from "@/components/ui/featured-in";
-import { cn } from '@/lib/utils';
-import { Home, Bookmark, PlusCircle, User, Settings, Code } from 'lucide-react';
-import Link from 'next/link';
+
+import { useEffect } from 'react';
 
 export default function HomePage() {
-  const [showBanner, setShowBanner] = useState(true);
-  const [activeNavIndex, setActiveNavIndex] = useState(0);
-  
-  // Color progression: lime green -> light orange -> dark orange -> red
-  const buttonColors = [
-    'bg-lime-500 hover:bg-lime-600', // Home - Lime green
-    'bg-orange-300 hover:bg-orange-400', // Bookmarks - Light orange  
-    'bg-orange-500 hover:bg-orange-600', // Add New - Orange
-    'bg-orange-700 hover:bg-orange-800', // Profile - Dark orange
-    'bg-red-600 hover:bg-red-700', // Settings - Red
-  ];
-  
-  const customNavItems = [
-    { id: 'home', icon: <Home />, label: 'Home', onClick: () => console.log('Home Clicked!') },
-    { id: 'bookmark', icon: <Bookmark />, label: 'Bookmarks', onClick: () => console.log('Bookmark Clicked!') },
-    { id: 'add', icon: <PlusCircle />, label: 'Add New', onClick: () => console.log('Add Clicked!') },
-    { id: 'profile', icon: <User />, label: 'Profile', onClick: () => console.log('Profile Clicked!') },
-    { id: 'settings', icon: <Settings />, label: 'Settings', onClick: () => console.log('Settings Clicked!') },
-  ];
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://app.rapidforms.co/embed/index.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
-    <div className="relative min-h-screen">
-      <ThemeToggle />
-      
-      {/* Banner */}
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 max-w-2xl w-full px-4">
-        <Banner
-          show={showBanner}
-          onHide={() => setShowBanner(false)}
-          icon={<Code className="m-px h-4 w-4 text-green-800" />}
-          title={
-            <>
-              From the makers of{" "}
-              <a
-                href="https://vibecodefixers.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold underline bg-orange-200 text-orange-800 px-1.5 py-0.5 rounded hover:bg-orange-300 hover:text-orange-900 transition-colors"
-              >
-                VibeCodeFixers.com
-              </a>
-            </>
-          }
-          action={{
-            label: "Fix Code Now",
-            onClick: () => {
-              const link = document.createElement('a');
-              link.href = 'https://vibecodefixers.com';
-              link.target = '_blank';
-              link.rel = 'noopener noreferrer';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            },
-          }}
-        />
-      </div>
-      
-      <DottedSurface className="size-full" />
-      
-      {/* As seen in - Top Left */}
-      <div className="fixed top-4 left-4 z-50 hidden lg:block">
-        <FeaturedIn />
-      </div>
-      
-      <div className="absolute inset-0 flex items-center justify-center -mt-56">
-        <div
-          aria-hidden="true"
-          className={cn(
-            'pointer-events-none absolute -top-10 left-1/2 size-full -translate-x-1/2 rounded-full',
-            'bg-[radial-gradient(ellipse_at_center,--theme(--color-foreground/.1),transparent_50%)]',
-            'blur-[30px]',
-          )}
-        />
-        <div className="relative flex items-center justify-center z-10 px-4 w-full">
-          
-          {/* Main Content - Center */}
-          <div className="text-center space-y-6">
-            <h1 className="font-mono text-6xl font-bold text-foreground mb-4">
-              VibeCoding Newsletter
-            </h1>
-            <div className="pt-4">
-              <Link href="/subscribe">
-                <button className={`${buttonColors[activeNavIndex]} text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 hover:scale-105 transform`}>
-                  Subscribe Now
-                </button>
-              </Link>
-            </div>
-          </div>
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Featured In Banner */}
+      <div className="w-full border-b border-border bg-[#111111]">
+        <div className="max-w-5xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-sm">
+          <span className="inline-flex items-center rounded-full bg-lime-500 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-black">
+            Featured In
+          </span>
+          <span className="font-bold text-white">404 MEDIA</span>
+          <span className="text-muted-foreground hidden sm:inline">
+            &ldquo;The Software Engineers Paid to Fix Vibe Coded Messes&rdquo;
+          </span>
+          <a
+            href="https://www.404media.co/the-software-engineers-paid-to-fix-vibe-coded-messes/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lime-500 hover:text-lime-400 font-medium whitespace-nowrap transition-colors"
+          >
+            Read Article &rarr;
+          </a>
         </div>
       </div>
-      
-      {/* Dock Navigation */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-        <LimelightNav 
-          className="bg-background/80 dark:bg-card/50 dark:border-accent/50 backdrop-blur-sm border-border/50 shadow-xl" 
-          items={customNavItems}
-          defaultActiveIndex={0}
-          onTabChange={(index) => setActiveNavIndex(index)}
-        />
-      </div>
+
+      {/* Main Content */}
+      <main className="flex-1 flex items-center justify-center px-4">
+        <div className="w-full max-w-md text-center space-y-8 -mt-16">
+          {/* Logo / Title */}
+          <div className="space-y-4">
+            <h1 className="font-mono text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
+              Vibe<span className="text-lime-500">Coding</span>
+            </h1>
+            <p className="text-lg text-muted-foreground">Newsletter</p>
+          </div>
+
+          {/* Copy */}
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
+            Subscribe to get the latest news on the vibe coding ecosystem.
+            Newest tools, VibeCoding tutorials, courses, and the latest
+            hackathons online and offline.
+          </p>
+
+          {/* Subscribe Form */}
+          <div className="bg-card border border-border rounded-lg p-6">
+            <iframe
+              loading="lazy"
+              id="rapidforms-iframe"
+              src="https://app.rapidforms.co/embed/9d2f08"
+              width="100%"
+              height="485"
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              className="rounded-lg"
+            />
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
