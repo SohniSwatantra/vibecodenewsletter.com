@@ -36,52 +36,51 @@ export default function HomePage() {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Sponsored By Banner */}
       <div className="w-full border-b border-border bg-[#111111]">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-center gap-6 sm:gap-10">
-          <span className="text-xs uppercase tracking-widest text-muted-foreground whitespace-nowrap">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-center gap-8 sm:gap-12">
+          <span className="text-sm uppercase tracking-widest text-muted-foreground whitespace-nowrap">
             Sponsored by
           </span>
-          <div className="flex items-center gap-6 sm:gap-10">
+          <div className="flex items-center gap-8 sm:gap-12">
             <Image
               src="/sponsors/nosana.png"
               alt="Nosana"
-              width={100}
-              height={28}
-              className="h-6 w-auto object-contain brightness-90"
+              width={120}
+              height={36}
+              className="h-8 w-auto object-contain brightness-90"
             />
             <Image
               src="/sponsors/nowa.png"
               alt="Nowa"
-              width={80}
-              height={28}
-              className="h-6 w-auto object-contain"
+              width={100}
+              height={36}
+              className="h-8 w-auto object-contain"
             />
             <Image
               src="/sponsors/vibecodefixers.png"
               alt="VibeCodeFixers"
-              width={100}
-              height={28}
-              className="h-6 w-auto object-contain"
+              width={120}
+              height={36}
+              className="h-8 w-auto object-contain"
             />
             <Image
               src="/sponsors/tag.png"
               alt="TAG"
-              width={80}
-              height={28}
-              className="h-6 w-auto object-contain brightness-90"
+              width={100}
+              height={36}
+              className="h-8 w-auto object-contain brightness-90"
             />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-4">
-      <div className="w-full max-w-md text-center space-y-10">
+      <div className="flex-1 flex items-center justify-center px-4 -mt-16">
+      <div className="w-full max-w-lg text-center space-y-10">
         {/* Logo / Title */}
         <div className="space-y-3">
-          <h1 className="font-mono text-4xl sm:text-5xl font-bold text-foreground tracking-tight">
-            Vibe<span className="text-lime-500">Coding</span>
+          <h1 className="font-mono text-5xl sm:text-6xl font-bold text-foreground tracking-tight whitespace-nowrap">
+            Vibe<span className="text-lime-500">Coding</span> Newsletter
           </h1>
-          <p className="text-lg text-muted-foreground">Newsletter</p>
         </div>
 
         {/* Copy */}
