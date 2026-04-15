@@ -83,7 +83,7 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center px-4 -mt-16">
-      <div className="w-full max-w-lg text-center space-y-10">
+      <div className="w-full text-center space-y-10 flex flex-col items-center">
         {/* Logo / Title */}
         <div className="space-y-3">
           <h1 className="font-mono text-5xl sm:text-6xl font-bold text-foreground tracking-tight whitespace-nowrap">
