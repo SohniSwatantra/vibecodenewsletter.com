@@ -33,7 +33,48 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Sponsored By Banner */}
+      <div className="w-full border-b border-border bg-[#111111]">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-center gap-6 sm:gap-10">
+          <span className="text-xs uppercase tracking-widest text-muted-foreground whitespace-nowrap">
+            Sponsored by
+          </span>
+          <div className="flex items-center gap-6 sm:gap-10">
+            <Image
+              src="/sponsors/nosana.png"
+              alt="Nosana"
+              width={100}
+              height={28}
+              className="h-6 w-auto object-contain brightness-90"
+            />
+            <Image
+              src="/sponsors/nowa.png"
+              alt="Nowa"
+              width={80}
+              height={28}
+              className="h-6 w-auto object-contain"
+            />
+            <Image
+              src="/sponsors/vibecodefixers.png"
+              alt="VibeCodeFixers"
+              width={100}
+              height={28}
+              className="h-6 w-auto object-contain"
+            />
+            <Image
+              src="/sponsors/tag.png"
+              alt="TAG"
+              width={80}
+              height={28}
+              className="h-6 w-auto object-contain brightness-90"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center space-y-10">
         {/* Logo / Title */}
         <div className="space-y-3">
@@ -80,6 +121,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </div>
+
       </div>
 
       {/* Subscribe Dialog */}
